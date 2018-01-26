@@ -36,6 +36,7 @@ public class Servlet extends HttpServlet{
             req.getSession().setAttribute("name", name);
         }
         PrintWriter printWriter = resp.getWriter();
+        printWriter.write(req.getRemoteAddr());
         printWriter.write("request parameter name - "+name);
         printWriter.write("\nsession parameter name - "+req.getSession().getAttribute("name"));
         printWriter.write("\ncontext parameter name - "+getInitParameter("name"));
@@ -46,7 +47,7 @@ public class Servlet extends HttpServlet{
             e.printStackTrace();
         }
 
-        req.getRequestDispatcher("Servlet2").forward(req, resp);
+//        req.getRequestDispatcher("Servlet2").forward(req, resp);
     }
 
     @Override
